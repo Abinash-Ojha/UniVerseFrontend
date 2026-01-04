@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const API_BASE = import.meta.env.VITE_API_BASE;
 
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -37,8 +37,11 @@ export default function Login() {
     container: {
       minHeight: "100vh",
       display: "flex",
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial',
+      fontFamily:
+        '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial',
     },
+
+    /* ---------------- LEFT SECTION ---------------- */
 
     leftSection: {
       flex: 1,
@@ -49,40 +52,82 @@ export default function Login() {
       background: "#ffffff",
     },
 
+    heading: {
+      fontSize: "44px",
+      fontWeight: 700,
+      color: "#0f172a",
+      marginBottom: "12px",
+    },
+
+    sub2heading: {
+      fontSize: "20px",
+      fontWeight: 400,
+      color: "#475569",
+      marginBottom: "28px",
+      maxWidth: "520px",
+    },
+
+    warningBox: {
+      padding: "12px 16px",
+      backgroundColor: "#fff1f2",
+      color: "#9f1239",
+      borderLeft: "4px solid #e11d48",
+      borderRadius: "6px",
+      fontSize: "14px",
+      marginBottom: "12px",
+      maxWidth: "520px",
+    },
+
+    desktopNote: {
+      fontSize: "14px",
+      color: "#64748b",
+      marginBottom: "28px",
+      fontStyle: "italic",
+    },
+
+    description: {
+      fontSize: "16px",
+      color: "#64748b",
+      lineHeight: 1.7,
+      marginBottom: "20px",
+      maxWidth: "520px",
+    },
+
+    featureList: {
+      paddingLeft: "18px",
+      margin: 0,
+      color: "#475569",
+      fontSize: "15px",
+      lineHeight: 1.9,
+      maxWidth: "520px",
+    },
+
+    footer: {
+      marginTop: "48px",
+      fontSize: "13px",
+      color: "#94a3b8",
+    },
+
+    contactLink: {
+      color: "#0f172a",
+      textDecoration: "none",
+      fontWeight: 500,
+    },
+
+    /* ---------------- RIGHT SECTION ---------------- */
+
     rightSection: {
       flex: 1,
       padding: "80px 60px",
       display: "flex",
       flexDirection: "column",
-      justifyContent: "center",
+      justifyContent: "flex-start",
       background: "#f8fafc",
-    },
-
-    heading: {
-      fontSize: "48px",
-      fontWeight: 700,
-      color: "#0f172a",
-      marginBottom: "20px",
-      lineHeight: 1.2,
-    },
-
-    subheading: {
-      fontSize: "18px",
-      color: "#64748b",
-      lineHeight: 1.6,
-      marginBottom: "40px",
-      maxWidth: "500px",
-    },
-
-    infoText: {
-      fontSize: "15px",
-      color: "#64748b",
-      lineHeight: 1.8,
-      marginBottom: "12px",
     },
 
     formContainer: {
       maxWidth: "400px",
+      marginTop: "40px",
     },
 
     formGroup: {
@@ -133,7 +178,7 @@ export default function Login() {
       border: "none",
       borderRadius: "6px",
       cursor: "pointer",
-      transition: "background 0.2s",
+      transition: "opacity 0.2s",
     },
 
     disabled: {
@@ -158,19 +203,7 @@ export default function Login() {
       border: "1px solid #e2e8f0",
       borderRadius: "6px",
       cursor: "pointer",
-      transition: "all 0.2s",
-    },
-
-    footer: {
-      marginTop: "60px",
-      fontSize: "13px",
-      color: "#94a3b8",
-    },
-
-    contactLink: {
-      color: "#0f172a",
-      textDecoration: "none",
-      fontWeight: 500,
+      transition: "background 0.2s",
     },
   };
 
@@ -188,22 +221,33 @@ export default function Login() {
         }
       `}</style>
 
+      {/* LEFT */}
       <div style={styles.leftSection}>
         <h1 style={styles.heading}>Welcome Back to the Verse</h1>
-        <h2 style={styles.heading}>NOTE : As the App is deployed on freetier render the first Request Might take Approx 2 to 3 mins </h2>
-        <p style={styles.subheading}>
-          Your identity already exists. Authenticate to return to the shared
-          world where others can see your presence in real time.
+
+        <p style={styles.sub2heading}>
+          Your identity already exists. Step back into the shared world.
         </p>
-        <p style={styles.infoText}>
-          ✓ Restore your persistent identity
+
+        <div style={styles.warningBox}>
+          ⚠️ This app runs on Render Free Tier. The first request may take{" "}
+          <b>2–3 minutes</b> to wake up.
+        </div>
+
+        <div style={styles.desktopNote}>
+          💻 Use a desktop device for the best experience
+        </div>
+
+        <p style={styles.description}>
+          Resume your presence in a virtual campus where movement is live and
+          conversations depend on proximity.
         </p>
-        <p style={styles.infoText}>
-          ✓ Reconnect to live presence
-        </p>
-        <p style={styles.infoText}>
-          ✓ Resume where you left off
-        </p>
+
+        <ul style={styles.featureList}>
+          <li>Restore your persistent identity</li>
+          <li>Reconnect to live presence</li>
+          <li>Resume exactly where you left off</li>
+        </ul>
 
         <div style={styles.footer}>
           For any queries, contact{" "}
@@ -213,6 +257,7 @@ export default function Login() {
         </div>
       </div>
 
+      {/* RIGHT */}
       <div style={styles.rightSection}>
         <div style={styles.formContainer}>
           <div style={styles.formGroup}>
@@ -243,7 +288,7 @@ export default function Login() {
                 style={styles.eyeButton}
                 onClick={() => setShowPassword(!showPassword)}
               >
-                {showPassword ? "👁" : "👁"}
+                👁
               </button>
             </div>
           </div>

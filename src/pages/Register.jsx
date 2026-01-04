@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 const API_BASE = import.meta.env.VITE_API_BASE;
 
 export default function Register() {
@@ -12,7 +13,7 @@ export default function Register() {
   async function register() {
     setLoading(true);
     try {
-      const res =  await fetch(`${API_BASE}/auth/register`, {
+      const res = await fetch(`${API_BASE}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -34,8 +35,11 @@ export default function Register() {
     container: {
       minHeight: "100vh",
       display: "flex",
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial',
+      fontFamily:
+        '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial',
     },
+
+    /* ---------------- LEFT SECTION ---------------- */
 
     leftSection: {
       flex: 1,
@@ -46,40 +50,82 @@ export default function Register() {
       background: "#ffffff",
     },
 
+    heading: {
+      fontSize: "44px",
+      fontWeight: 700,
+      color: "#0f172a",
+      marginBottom: "12px",
+    },
+
+    sub2heading: {
+      fontSize: "20px",
+      fontWeight: 400,
+      color: "#475569",
+      marginBottom: "28px",
+      maxWidth: "520px",
+    },
+
+    warningBox: {
+      padding: "12px 16px",
+      backgroundColor: "#fff1f2",
+      color: "#9f1239",
+      borderLeft: "4px solid #e11d48",
+      borderRadius: "6px",
+      fontSize: "14px",
+      marginBottom: "12px",
+      maxWidth: "520px",
+    },
+
+    desktopNote: {
+      fontSize: "14px",
+      color: "#64748b",
+      marginBottom: "28px",
+      fontStyle: "italic",
+    },
+
+    description: {
+      fontSize: "16px",
+      color: "#64748b",
+      lineHeight: 1.7,
+      marginBottom: "20px",
+      maxWidth: "520px",
+    },
+
+    featureList: {
+      paddingLeft: "18px",
+      margin: 0,
+      color: "#475569",
+      fontSize: "15px",
+      lineHeight: 1.9,
+      maxWidth: "520px",
+    },
+
+    footer: {
+      marginTop: "48px",
+      fontSize: "13px",
+      color: "#94a3b8",
+    },
+
+    contactLink: {
+      color: "#0f172a",
+      textDecoration: "none",
+      fontWeight: 500,
+    },
+
+    /* ---------------- RIGHT SECTION ---------------- */
+
     rightSection: {
       flex: 1,
       padding: "80px 60px",
       display: "flex",
       flexDirection: "column",
-      justifyContent: "center",
+      justifyContent: "flex-start",
       background: "#f8fafc",
-    },
-
-    heading: {
-      fontSize: "48px",
-      fontWeight: 700,
-      color: "#0f172a",
-      marginBottom: "20px",
-      lineHeight: 1.2,
-    },
-
-    subheading: {
-      fontSize: "18px",
-      color: "#64748b",
-      lineHeight: 1.6,
-      marginBottom: "40px",
-      maxWidth: "500px",
-    },
-
-    infoText: {
-      fontSize: "15px",
-      color: "#64748b",
-      lineHeight: 1.8,
-      marginBottom: "12px",
     },
 
     formContainer: {
       maxWidth: "400px",
+      marginTop: "40px",
     },
 
     formGroup: {
@@ -130,7 +176,7 @@ export default function Register() {
       border: "none",
       borderRadius: "6px",
       cursor: "pointer",
-      transition: "background 0.2s",
+      transition: "opacity 0.2s",
     },
 
     disabled: {
@@ -155,19 +201,7 @@ export default function Register() {
       border: "1px solid #e2e8f0",
       borderRadius: "6px",
       cursor: "pointer",
-      transition: "all 0.2s",
-    },
-
-    footer: {
-      marginTop: "60px",
-      fontSize: "13px",
-      color: "#94a3b8",
-    },
-
-    contactLink: {
-      color: "#0f172a",
-      textDecoration: "none",
-      fontWeight: 500,
+      transition: "background 0.2s",
     },
   };
 
@@ -185,21 +219,33 @@ export default function Register() {
         }
       `}</style>
 
+      {/* LEFT */}
       <div style={styles.leftSection}>
         <h1 style={styles.heading}>Enter the Verse</h1>
-        <p style={styles.subheading}>
-          A shared virtual campus where presence is real, movement is live, and
-          conversations happen based on proximity.
+
+        <p style={styles.sub2heading}>
+          Ready to explore the virtual world with your peers
         </p>
-        <p style={styles.infoText}>
-          ✓ Live presence - see others move in real time
+
+        <div style={styles.warningBox}>
+          ⚠️ This app runs on Render Free Tier. The first request may take{" "}
+          <b>2–3 minutes</b> to wake up.
+        </div>
+
+        <div style={styles.desktopNote}>
+          💻 Use a desktop device for the best experience
+        </div>
+
+        <p style={styles.description}>
+          A shared virtual campus where presence is real, movement is live,
+          and conversations happen based on proximity.
         </p>
-        <p style={styles.infoText}>
-          ✓ Proximity chat - talk only when you are close
-        </p>
-        <p style={styles.infoText}>
-          ✓ Persistent identity - your presence survives sessions
-        </p>
+
+        <ul style={styles.featureList}>
+          <li>Live presence — see others move in real time</li>
+          <li>Proximity chat — talk only when you are close</li>
+          <li>Persistent identity — your presence survives sessions</li>
+        </ul>
 
         <div style={styles.footer}>
           For any queries, contact{" "}
@@ -209,6 +255,7 @@ export default function Register() {
         </div>
       </div>
 
+      {/* RIGHT */}
       <div style={styles.rightSection}>
         <div style={styles.formContainer}>
           <div style={styles.formGroup}>
@@ -239,7 +286,7 @@ export default function Register() {
                 style={styles.eyeButton}
                 onClick={() => setShowPassword(!showPassword)}
               >
-                {showPassword ? "👁" : "👁"}
+                👁
               </button>
             </div>
           </div>
